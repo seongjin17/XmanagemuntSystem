@@ -6,7 +6,7 @@ public class MenuManager {
 		System.out.println("1, Add character");
 	 	System.out.println("2, Delete character");
 	 	System.out.println("3, Edit character");
-	 	System.out.println("4, View character");
+	 	System.out.println("4, View ch aracter");
 	 	System.out.println("Exit");
 	 	
 				

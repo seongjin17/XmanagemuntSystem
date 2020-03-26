@@ -16,16 +16,16 @@ public class MenuManager {
 			System.out.println("Exit");
 			System.out.println("Select one number between 1-6:");
 			num = input.nextInt();
-			if(num ==1) {
+			if(num == 1) {
 				addcharacter();
 			}	
-			else if(num==2) {
+			else if(num == 2) {
 				deletechatacter();
 			}
-			else if(num==3) {
+			else if(num == 3) {
 				editcharacter();
 			}
-			else if(num==4) {
+			else if(num == 4 ) {
 				viewcharacter();
 			}
 			else {

@@ -35,7 +35,7 @@ public class MenuManager {
 	}		
 	public static void addcharacter() {
 		Scanner input = new Scanner(System.in);
-		System.out.print("character name:");
+		System.out.print("character nicname:");
 	    String charactername = input.next();
 	    System.out.print("character level:");
 	    int characterlevel = input.nextInt();

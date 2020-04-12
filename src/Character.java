@@ -20,7 +20,7 @@ public class Character {
 		this.job = job;
 	}
 	public void printinfo() {
-		System.out.println("nicname:"+ nicname +"level"+level+"power"+power+"job"+job);
+		System.out.println("nicname:"+ nicname +"level:"+level+"power:"+power+"job:"+job);
 		
 	}
 }

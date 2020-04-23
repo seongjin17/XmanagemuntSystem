@@ -88,8 +88,8 @@ public class Charactermanager {
 					num = input.nextInt();
 					if(num == 1) {
 						System.out.print("character nicname:");
-						String characternicname = input.next();
-						character.setNicname(nicname);
+						String nicname1= input.next();
+						character.setNicname(nicname1);
 						
 					}	
 					else if(num == 2) {

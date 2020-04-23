@@ -12,6 +12,10 @@ public class Character {
 	public Character() {
 		
 	}
+	public Character(CharacterKind kind) {
+		this.kind = kind;
+		
+	}
 	public Character(String nicname, int level) {
 		this.nicname= nicname;
 		this.level = level;
@@ -19,6 +23,13 @@ public class Character {
 	}
 	public Character(String nicname, int level, int power, String job) {
 		this.nicname= nicname;
+		this.level = level;
+		this.power = power;
+		this.job = job;
+	}
+	public Character(CharacterKind kind,String nicname, int level, int power, String job) {
+		this.kind = kind;
+		this.nicname = nicname;
 		this.level = level;
 		this.power = power;
 		this.job = job;
@@ -55,7 +66,23 @@ public class Character {
 	}
 	
 	public void printinfo() {
-		System.out.println("nicname:"+ nicname +"level:"+level+"power:"+power+"job:"+job);
+		String skind ="none";
+		switch(this.kind) {
+		case forthtransfer:
+			skind = "4차";
+			break;
+		case thirdtransfer:
+			skind = "3차";
+			break;
+		case Secondtransfer:
+			skind = "2차";
+			break;
+		case firsttransfer:
+			skind = "1차";
+			break;
+		default:
+		}
+		System.out.println("nicname:"+ nicname+"transfer:"+skind +"level:"+level+"power:"+power+"job:"+job);
 		
 	}
 	public void getUserInput(Scanner input) {		

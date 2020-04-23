@@ -1,8 +1,6 @@
+package character;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import character.Character;
-import character.forthtransfer;
 
 public class Charactermanager {
 	ArrayList<Character> characters = new ArrayList<Character>();
@@ -22,25 +20,25 @@ public class Charactermanager {
 			System.out.print("Select num for character Kind between 1-4:");
 			kind = input.nextInt();
 			if(kind==1) {
-				character = new forthtransfer();
+				character = new  Character(CharacterKind.forthtransfer);
 				character.getUserInput(input);
 				characters.add(character);
 				break;
 			}
 			else if(kind==2) {
-				character = new Character();
+				character = new Character(CharacterKind.thirdtransfer);
 				character.getUserInput(input);
 				characters.add(character);
 				break;
 			}
 			else if(kind==3) {
-				character = new Character();
+				character = new Character(CharacterKind.Secondtransfer);
 				character.getUserInput(input);
 				characters.add(character);
 				break;
 			}
 			else if(kind==4) {
-				character = new Character();	
+				character = new Character(CharacterKind.firsttransfer);	
 				character.getUserInput(input);
 				characters.add(character);
 				break;
@@ -123,7 +121,7 @@ public class Charactermanager {
 	public void viewcharacters() {
 //		System.out.print("character nicname:");
 //	    String nicname = input.next();
-		System.out.println("# of registered character :"+characters.size());
+		System.out.println("registered character :"+characters.size());
 		for(int i=0;i<characters.size();i++) {
 			characters.get(i).printinfo();
 		}

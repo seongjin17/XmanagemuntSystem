@@ -2,7 +2,7 @@ package character;
 
 import java.util.Scanner;
 
-public class Character {
+public abstract class Character implements Characterinput {
 	protected CharacterKind kind= CharacterKind.forthtransfer;
 	protected String nicname;
 	protected int level;
@@ -65,7 +65,29 @@ public class Character {
 		this.job = job;
 	}
 	
-	public void printinfo() {
+	public abstract void printinfo();
+	
+	public void setCharacterNicname(Scanner input) {
+		System.out.print("character nicname:");
+		String nicname1= input.next();
+		this.setNicname(nicname1);
+	}
+	public void setCharacterlevel(Scanner input) {
+		System.out.print("character level:");						
+	    int level = input.nextInt();
+	    this.setLevel(level);
+	}
+	public void setCharacterpower(Scanner input) {
+		System.out.print("character power:");
+	    int power = input.nextInt();
+	    this.setPower(power);
+	}
+	public void setCharacterjob(Scanner input) {
+		System.out.print("character job:");
+	   String job = input.next();
+	    this.setJob(job);
+	}
+	public String getkind() {
 		String skind ="none";
 		switch(this.kind) {
 		case forthtransfer:
@@ -82,25 +104,8 @@ public class Character {
 			break;
 		default:
 		}
-		System.out.println("nicname:"+ nicname+"transfer:"+skind +"level:"+level+"power:"+power+"job:"+job);
-		
+		return skind;
 	}
-	public void getUserInput(Scanner input) {		
-		System.out.print("character nicname:");
-		String nicname = input.next();
-		this.setNicname(nicname);
-		
-	    System.out.print("character level:");
-	    int level = input.nextInt();
-	    this.setLevel(level);
-	    
-	    System.out.print("character power:");
-	    int power = input.nextInt();
-	    this.setPower(power);
-	    
-	    System.out.print("character job:");
-	    String job = input.next();
-	    this.setJob(job);
-	}	
+	
 	
 }

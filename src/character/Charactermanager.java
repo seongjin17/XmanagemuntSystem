@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Charactermanager {
-	ArrayList<Character> characters = new ArrayList<Character>();
+	ArrayList<Characterinput> characters = new ArrayList<Characterinput>();
 	Scanner input;
 	Charactermanager(Scanner input){
 		this.input = input;
@@ -11,7 +11,7 @@ public class Charactermanager {
 	
 	public void addcharacter() {	
 		int kind=0;
-		Character character;
+		Characterinput characterinput;
 		while(kind != 1 && kind != 2 && kind != 3 && kind != 4) { 
 			System.out.print("1 for fotrhtransfer");
 			System.out.print("2 for thirdtransfer");
@@ -20,27 +20,27 @@ public class Charactermanager {
 			System.out.print("Select num for character Kind between 1-4:");
 			kind = input.nextInt();
 			if(kind==1) {
-				character = new  Character(CharacterKind.forthtransfer);
-				character.getUserInput(input);
-				characters.add(character);
+				characterinput = new forthtransfer(CharacterKind.forthtransfer);
+				characterinput.getUserInput(input);
+				characters.add(characterinput);
 				break;
 			}
 			else if(kind==2) {
-				character = new Character(CharacterKind.thirdtransfer);
-				character.getUserInput(input);
-				characters.add(character);
+				characterinput = new thirdtransfer(CharacterKind.thirdtransfer);
+				characterinput.getUserInput(input);
+				characters.add(characterinput);
 				break;
 			}
 			else if(kind==3) {
-				character = new Character(CharacterKind.Secondtransfer);
-				character.getUserInput(input);
-				characters.add(character);
+				characterinput = new secondtransfer(CharacterKind.Secondtransfer);
+				characterinput.getUserInput(input);
+				characters.add(characterinput);
 				break;
 			}
 			else if(kind==4) {
-				character = new Character(CharacterKind.firsttransfer);	
-				character.getUserInput(input);
-				characters.add(character);
+				characterinput = new firsttransfer(CharacterKind.firsttransfer);	
+				characterinput.getUserInput(input);
+				characters.add(characterinput);
 				break;
 			}
 			else {
@@ -53,79 +53,86 @@ public class Charactermanager {
 	public void deletechatacter() {
 		System.out.print("character nicname:");
 	    String nicname= input.next();
-	    int index=-1;
+	    int index= findindex(nicname);
 	    for(int i=0;i<characters.size();i++) {
 	    	 if(characters.get(i).getNicname().equals(nicname)) {
 	 	    	index = i;
 	 	    	break;
 	    	 }	
 	    }
-	    if(index >=0) {
-	    	characters.remove(index);
-	    	System.out.println("the character"+ nicname +"is deleted");
+	    removefromCharacters(index,nicname);
+	}
+	public int findindex(String nicname) {
+		int index=-1;
+	    for(int i=0;i<characters.size();i++) {
+	    	 if(characters.get(i).getNicname().equals(nicname)) {
+	 	    	index = i;
+	 	    	break;
+	    	 }	
 	    }
-	    else {
-	    	System.out.println("the character has not been registered");
-	    	return;
-	    }
+	    return index;
+	}
 	     	    
+	
+	public int removefromCharacters(int index, String nicname){
+		 if(index >=0) {
+		    	characters.remove(index);
+		    	System.out.println("the character"+ nicname +"is deleted");
+		    	return 1;
+		    }
+		    else {
+		    	System.out.println("the character has not been registered");
+		    	return-1;
+		    }	
 	}
 	public void editcharacter() {
 		System.out.print("character nicname:");
 	    String nicname = input.next();
 	    for(int i=0;i<characters.size();i++) {
-	    	Character character = characters.get(i);
+	    	Characterinput character = characters.get(i);
 		    if(character.getNicname().equals(nicname)) {
 		    	int num = -1;
 				while(num !=5) {
-					System.out.println("** Character Info Edit Menu **");
-					System.out.println("1, Edit nicname");
-					System.out.println("2, Edit level ");
-					System.out.println("3, Edit power");
-					System.out.println("4, Edit job");
-					System.out.println("5, Exit");
-					System.out.println("Select one number between 1-5:");
+					showEditMenu();
 					num = input.nextInt();
-					if(num == 1) {
-						System.out.print("character nicname:");
-						String nicname1= input.next();
-						character.setNicname(nicname1);
-						
-					}	
-					else if(num == 2) {
-						System.out.print("character level:");						
-					    int level = input.nextInt();
-					    character.setLevel(level);
-					   
-					}
-					else if(num == 3) {
-						System.out.print("character power:");
-					    int power = input.nextInt();
-					    character.setPower(power);
-					       
-					}
-					else if(num == 4 ) {
-						System.out.print("character job:");
-					    String job = input.next();
-					    character.setJob(job);
-					   
-					}
-					else {
+					switch(num) {
+					case 1:
+						character.setCharacterNicname(input);
+						break;
+					case 2:
+						character.setCharacterlevel(input);
+						break;
+					case 3:
+						character.setCharacterpower(input);
+						break;
+					case 4:
+						character.setCharacterjob(input);
+						break;
+					default:
 						continue;
 					}
-				}
-				break;
+				}		
+			break;
 		    }	
 	    }
 	}
 	public void viewcharacters() {
-//		System.out.print("character nicname:");
-//	    String nicname = input.next();
+
 		System.out.println("registered character :"+characters.size());
 		for(int i=0;i<characters.size();i++) {
 			characters.get(i).printinfo();
 		}
 	    
-	}    
+	} 
+	
+	public void showEditMenu() {
+		System.out.println("** Character Info Edit Menu **");
+		System.out.println("1, Edit nicname");
+		System.out.println("2, Edit level ");
+		System.out.println("3, Edit power");
+		System.out.println("4, Edit job");
+		System.out.println("5, Exit");
+		System.out.println("Select one number between 1-5:");
+	}
 }
 

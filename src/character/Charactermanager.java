@@ -13,10 +13,10 @@ public class Charactermanager {
 		int kind=0;
 		Characterinput characterinput;
 		while(kind != 1 && kind != 2 && kind != 3 && kind != 4) { 
-			System.out.print("1 for fotrhtransfer");
-			System.out.print("2 for thirdtransfer");
-			System.out.print("3 for secondtransfer");
-			System.out.print("4 for firsttransfer");
+			System.out.print("1 fotrhtransfer");
+			System.out.print("2 thirdtransfer");
+			System.out.print("3 secondtransfer");
+			System.out.print("4 firsttransfer");
 			System.out.print("Select num for character Kind between 1-4:");
 			kind = input.nextInt();
 			if(kind==1) {

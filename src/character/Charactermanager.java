@@ -1,5 +1,6 @@
 package character;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Charactermanager {
@@ -13,40 +14,48 @@ public class Charactermanager {
 		int kind=0;
 		Characterinput characterinput;
 		while(kind != 1 && kind != 2 && kind != 3 && kind != 4) { 
-			System.out.print("1 fotrhtransfer");
-			System.out.print("2 thirdtransfer");
-			System.out.print("3 secondtransfer");
-			System.out.print("4 firsttransfer");
-			System.out.print("Select num for character Kind between 1-4:");
-			kind = input.nextInt();
-			if(kind==1) {
-				characterinput = new forthtransfer(CharacterKind.forthtransfer);
-				characterinput.getUserInput(input);
-				characters.add(characterinput);
-				break;
+			try {
+				System.out.println("1 fotrhtransfer");
+				System.out.println("2 thirdtransfer");
+				System.out.println("3 secondtransfer");
+				System.out.println("4 firsttransfer");
+				System.out.println("Select num for character Kind between 1-4:");
+				kind = input.nextInt();
+				if(kind==1) {
+					characterinput = new forthtransfer(CharacterKind.forthtransfer);
+					characterinput.getUserInput(input);
+					characters.add(characterinput);
+					break;
+				}
+				else if(kind==2) {
+					characterinput = new thirdtransfer(CharacterKind.thirdtransfer);
+					characterinput.getUserInput(input);
+					characters.add(characterinput);
+					break;
+				}
+				else if(kind==3) {
+					characterinput = new secondtransfer(CharacterKind.Secondtransfer);
+					characterinput.getUserInput(input);
+					characters.add(characterinput);
+					break;
+				}
+				else if(kind==4) {
+					characterinput = new firsttransfer(CharacterKind.firsttransfer);	
+					characterinput.getUserInput(input);
+					characters.add(characterinput);
+					break;
+				}
+				else {
+					System.out.print("Select num for character Kind between 1-4:");
+				}
 			}
-			else if(kind==2) {
-				characterinput = new thirdtransfer(CharacterKind.thirdtransfer);
-				characterinput.getUserInput(input);
-				characters.add(characterinput);
-				break;
+			catch(InputMismatchException e) {
+				System.out.println("Select an integer number between 1-4:");
+				if(input.hasNext()) {
+					input.next();
+				}
+				kind=-1;	
 			}
-			else if(kind==3) {
-				characterinput = new secondtransfer(CharacterKind.Secondtransfer);
-				characterinput.getUserInput(input);
-				characters.add(characterinput);
-				break;
-			}
-			else if(kind==4) {
-				characterinput = new firsttransfer(CharacterKind.firsttransfer);	
-				characterinput.getUserInput(input);
-				characters.add(characterinput);
-				break;
-			}
-			else {
-				System.out.print("Select num for character Kind between 1-4:");
-			}
-			
 		}	
 			    
 	}
@@ -115,6 +124,9 @@ public class Charactermanager {
 			break;
 		    }	
 	    }
+	}
+	public void showmenu() {
+		
 	}
 	public void viewcharacters() {
 

@@ -1,8 +1,13 @@
 package character;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class Character implements Characterinput {
+public abstract class Character implements Characterinput,Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7596392726099327874L;
 	protected CharacterKind kind= CharacterKind.forthtransfer;
 	protected String nicname;
 	protected int level;

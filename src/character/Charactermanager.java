@@ -1,11 +1,17 @@
 package character;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Charactermanager {
+public class Charactermanager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3110153785865412476L;
+	
 	ArrayList<Characterinput> characters = new ArrayList<Characterinput>();
-	Scanner input;
+	transient Scanner input;
 	Charactermanager(Scanner input){
 		this.input = input;
 	}	
@@ -145,6 +151,9 @@ public class Charactermanager {
 		System.out.println("4, Edit job");
 		System.out.println("5, Exit");
 		System.out.println("Select one number between 1-5:");
+	}
+	public void setScanner(Scanner input) {
+	         this.input = input;
 	}
 }
 

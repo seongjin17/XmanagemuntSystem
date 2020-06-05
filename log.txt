@@ -1,0 +1,2 @@
+5월 22, 2020 4:57:13 오후 log.Eventlogger log
+정보: view a character

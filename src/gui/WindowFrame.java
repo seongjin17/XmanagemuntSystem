@@ -3,15 +3,21 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import character.Charactermanager;
+
 public class WindowFrame extends JFrame{
+	
+	Charactermanager charactermanager;
 	MenuSelection menuselection ;	
 	CharacterAdder characteradder ;
 	CharacterViewer characterviewer ;
 	
-	public WindowFrame() {
-		this. menuselection = new MenuSelection(this);
-		this. characteradder = new CharacterAdder(this);
-		this. characterviewer = new CharacterViewer(this);
+	
+	public WindowFrame(Charactermanager charactermanager) {
+		this.charactermanager = charactermanager;
+		menuselection = new MenuSelection(this);
+		characteradder = new CharacterAdder(this);
+		characterviewer = new CharacterViewer(this,this.charactermanager);
 		
 		this.setSize(500,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.Eventlogger;
 public class MenuManager {
 	static Eventlogger logger = new Eventlogger("log.txt");
@@ -23,6 +24,7 @@ public class MenuManager {
 		else {
             charactermanager.setScanner(input);
         }
+		WindowFrame frame = new WindowFrame(charactermanager);  
 		seletMenu(input,charactermanager);
 		putObject(charactermanager,"charactermanager.ser");
 	}	

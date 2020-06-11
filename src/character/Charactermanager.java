@@ -21,7 +21,7 @@ public class Charactermanager implements Serializable {
 		Characterinput characterinput;
 		while(kind != 1 && kind != 2 && kind != 3 && kind != 4) { 
 			try {
-				System.out.println("1 fotrhtransfer");
+				System.out.println("1 forthtransfer");
 				System.out.println("2 thirdtransfer");
 				System.out.println("3 secondtransfer");
 				System.out.println("4 firsttransfer");
@@ -143,6 +143,13 @@ public class Charactermanager implements Serializable {
 	    
 	} 
 	
+	public int size() {
+		return characters.size();
+	}
+	
+	public Characterinput get(int index) {
+		return (Character) characters.get(index);
+	}
 	public void showEditMenu() {
 		System.out.println("** Character Info Edit Menu **");
 		System.out.println("1, Edit nicname");
